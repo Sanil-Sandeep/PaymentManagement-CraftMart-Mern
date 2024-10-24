@@ -58,6 +58,20 @@ router.get("/", async (request, response) => {
   }
 });
 
+//Route for get one payment from database by id
+router.get("/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    const payment = await Payment.findById(id);
+
+    return response.status(200).json(payment);
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 
 
 
