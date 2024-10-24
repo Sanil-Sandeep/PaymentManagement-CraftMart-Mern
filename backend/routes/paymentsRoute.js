@@ -108,7 +108,23 @@ router.put("/:id", async (request, response) => {
   }
 });
 
+//Route for delete a payment
+router.delete("/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+    const result = await Payment.findByIdAndDelete(id);
 
+    if (!result) {
+      return response.status(404).json({ message: "Payment not found" });
+    }
+    return response
+      .status(200)
+      .send({ message: "Payment deleted successfully " });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
 
 
 export default router;
