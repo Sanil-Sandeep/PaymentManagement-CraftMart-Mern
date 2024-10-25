@@ -62,6 +62,37 @@ router.get("/:id", async (request, response) => {
   }
 });
 
+//Route for update a expense
+router.put("/:id", async (request, response) => {
+  try {
+    if (
+        !request.body.eID ||
+        !request.body.name ||
+        !request.body.expense ||
+        !request.body.cost 
+    ) {
+      return response.status(400).send({
+        message:
+          "Send all required fields: eID, name, expense, cost",
+      });
+    }
+
+    const { id } = request.params;
+
+    const result = await Expenses.findByIdAndUpdate(id, request.body);
+
+    if (!result) {
+      return response.status(404).json({ message: "Expense not found" });
+    }
+    return response
+      .status(200)
+      .send({ message: "Expense details updated successdully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 
 
 export default router;
