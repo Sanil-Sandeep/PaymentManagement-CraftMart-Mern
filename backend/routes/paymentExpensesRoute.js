@@ -93,6 +93,22 @@ router.put("/:id", async (request, response) => {
   }
 });
 
+//Route for delete a expense
+router.delete("/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+    const result = await Expenses.findByIdAndDelete(id);
 
+    if (!result) {
+      return response.status(404).json({ message: "Expense not found" });
+    }
+    return response
+      .status(200)
+      .send({ message: "Expense deleted successfully " });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
 
 export default router;
