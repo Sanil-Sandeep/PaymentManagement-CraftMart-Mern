@@ -48,6 +48,20 @@ router.get("/", async (request, response) => {
   }
 });
 
+//Route for get one expesnse from database by id
+router.get("/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    const expense = await Expenses.findById(id);
+
+    return response.status(200).json(expense);
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 
 
 export default router;
