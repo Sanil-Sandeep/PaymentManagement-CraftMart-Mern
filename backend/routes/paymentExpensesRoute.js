@@ -33,6 +33,21 @@ router.post("/", async (request, response) => {
   }
 });
 
+//Route for get all expenses from database
+router.get("/", async (request, response) => {
+  try {
+    const expenses = await Expenses.find({});
+
+    return response.status(200).json({
+      count: expenses.length,
+      data: expenses,
+    });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 
 
 export default router;
