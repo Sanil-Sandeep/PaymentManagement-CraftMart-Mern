@@ -165,6 +165,149 @@ const handleCardHolderNameChange = (e) => {
 };
 
 return (
-  
+  <div>
+    <Header/>
+  <div style={styles.container}>
+    <h1 style={styles.title}>Edit your payment details</h1>
+    {loading && <Spinner />}
+    <div style={styles.formContainer}>
+    <div style={styles.inputRow}>
+    <div style={styles.inputGroup}>
+      <label style={styles.label}>Product Name :</label>
+      <textarea
+        id="productNameInput"
+        value={productName}
+        readOnly
+        onChange={(e) => setProductName(e.target.value)}
+        style={{ ...styles.textarea, width: '400px' }} 
+        rows="10"
+      />
+      {errors.productName && <div style={styles.error}>{errors.productName}</div>}
+    </div>
+
+    <div style={styles.inputGroup}>
+      <label style={styles.label}>Price :</label>
+      <textarea
+        id="priceInput"
+        value={price}
+        readOnly
+        onChange={(e) => setPrice(e.target.value)}
+        style={{ ...styles.textarea, width: '100px' }}
+        rows="10"
+      />
+      {errors.price && <div style={styles.error}>{errors.price}</div>}
+    </div>
+
+    <div style={styles.inputGroup}>
+      <label style={styles.label}>Quantity :</label>
+      <textarea
+        id="quantityInput"
+        value={quantity}
+        readOnly
+        onChange={(e) => setQuantity(e.target.value)}
+        style={{ ...styles.textarea, width: '100px' }}
+        rows="10"
+      />
+      {errors.quantity && <div style={styles.error}>{errors.quantity}</div>}
+    </div>
+
+    <div style={styles.inputGroup}>
+      <label style={styles.label}>Total Price :</label>
+      <textarea
+        id="totalPriceInput"
+        value={totalPrice}
+        readOnly
+        style={{ ...styles.textarea, width: '100px' }}
+        rows="10"
+      />
+    </div>
+  </div>
+
+    <hr style={styles.hr} />
+
+    <div style={styles.inputGroup}>
+        <label style={styles.label}>Email :</label>
+        <input 
+          type='email'
+          value={email}
+          onChange={(e) => {setEmail(e.target.value);  validateForm();}}
+          style={styles.input}
+        />
+        {errors.email && <div style={styles.error}>{errors.email}</div>}
+      </div>
+
+      <div style={styles.inputGroup}>
+        <label style={styles.label}>Card Type :</label>
+        <div style={styles.cardTypeContainer}>
+          <label style={styles.cardTypeLabel}>
+            <input
+              type='radio'
+              value='visa'
+              checked={cardType === 'visa'}
+              onChange={(e) => {setCardType(e.target.value);  validateForm();}}
+              style={styles.radio}
+            />
+            <img src={visaImg} alt='Visa' style={styles.cardImage} />
+          </label>
+          <label style={styles.cardTypeLabel}>
+            <input
+              type='radio'
+              value='master'
+              checked={cardType === 'master'}
+              onChange={(e) => {setCardType(e.target.value);  validateForm();}}
+              style={styles.radio}
+            />
+            <img src={masterImg} alt='MasterCard' style={styles.cardImage} />
+          </label>
+        </div>
+        {errors.cardType && <div style={styles.error}>{errors.cardType}</div>}
+      </div>
+
+      <div style={styles.inputGroup}>
+        <label style={styles.label}>Card Holder Name :</label>
+        <input
+          type='text'
+          value={cardHolderName}
+          onChange={handleCardHolderNameChange}
+          style={styles.input}
+        />
+        {errors.cardHolderName && <div style={styles.error}>{errors.cardHolderName}</div>}
+      </div>
+
+      <div style={styles.inputGroup}>
+        <label style={styles.label}>Card Number :</label>
+        <input
+          type='text'
+          value={cardNumber}
+          onChange={handleCardNumberChange}
+          style={styles.input}
+        />
+        {errors.cardNumber && <div style={styles.error}>{errors.cardNumber}</div>}
+      </div>
+
+      <div style={styles.inputGroup}>
+        <label style={styles.label}>CVV :</label>
+        <input
+          type='text'
+          value={cvv}
+          onChange={handleCvvChange}
+          style={styles.input}
+        />
+        {errors.cvv && <div style={styles.error}>{errors.cvv}</div>}
+      </div>
+
+        <button style={styles.button} onClick={handleEditPayment}>
+          Save
+        </button>
+        {errors.form && <div style={styles.error}>{errors.form}</div>}
+      </div>
+    </div>
+    <Footer/>
+    </div>
+)
+}
+
+
+
 
 export default EditPayment;
