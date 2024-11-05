@@ -272,5 +272,236 @@ const NetProfit = () => {
 
 
 
-  
+  return (
+    <div>
+      <Header />
+      <div style={styles.page}>
+        <div style={styles.container}>
+          <div style={styles.buttonContainer}>
+            <Link to="/">
+              <button style={styles.buttonexpense}>Expenses</button>
+            </Link>
+            <Link to="/payments">
+              <button style={styles.buttonincome}>Incomes</button>
+            </Link>
+            <Link to="/profits">
+              <button style={styles.buttonprofit}>Net Profit</button>
+            </Link>
+          </div>
+          <div style={styles.header}>
+            <h1 style={styles.title}>Net Profit Management</h1>
+            <button
+              className="btn btn-primary"
+              onClick={generatePDF}
+              style={{ ...styles.downloadButton, ...styles.downloadButtonHover }}
+            >
+              Net Profit Report
+            </button>
+          </div>
+
+          {loading ? (
+            <Spinner />
+          ) : (
+            <>
+
+              <div style={{ marginBottom: '20px' }}>
+                <canvas id="incomeExpenseChart" width="400" height="400"></canvas>
+              </div>
+              <div style={{ marginBottom: '50px' }}></div>
+              <div style={styles.summary}>
+                <h3>Summary</h3>
+                <p>Total Income: Rs {totalIncome}</p>
+                <p>Total Expenses: Rs {totalExpenses}</p>
+                <p>Net Profit: Rs {netProfit}</p>
+              </div>
+              <div style={{ marginBottom: '150px' }}></div>
+              {/* <div style={styles.tablesContainer}>
+                <div style={styles.tableWrapper}>
+                  <table style={styles.table}>
+                    <thead>
+                      <tr>
+                        <th style={styles.th}>Payment ID</th>
+                        <th style={styles.th}>Customer</th>
+                        <th style={styles.th}>Total Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {payments.map((payment) => (
+                        <tr key={payment._id}>
+                          <td style={styles.td}>{payment._id}</td>
+                          <td style={styles.td}>{payment.cardHolderName}</td>
+                          <td style={styles.td}>Rs {payment.totalPrice}</td>
+                        </tr>
+                      ))}
+                      <tr>
+                        <td colSpan="2" style={totalPriceRowStyle.totalPriceLabel}>
+                          Total Sales Income :
+                        </td>
+                        <td style={totalPriceRowStyle.totalPriceValue}>
+                          Rs {totalIncome}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div style={styles.tableWrapper}>
+                  <table style={styles.table}>
+                    <thead>
+                      <tr>
+                        <th style={styles.th}>Expense ID</th>
+                        <th style={styles.th}>Name</th>
+                        <th style={styles.th}>Expense</th>
+                        <th style={styles.th}>Cost</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {expenses.map((expense) => (
+                        <tr key={expense._id}>
+                          <td style={styles.td}>{expense._id}</td>
+                          <td style={styles.td}>{expense.name}</td>
+                          <td style={styles.td}>Rs {expense.expense}</td>
+                          <td style={styles.td}>Rs {expense.cost}</td>
+                        </tr>
+                      ))}
+                      <tr>
+                        <td colSpan="3" style={totalPriceRowStyle.totalPriceLabel}>
+                          Total Expenses :
+                        </td>
+                        <td style={totalPriceRowStyle.totalPriceValue}>
+                          Rs {totalExpenses}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div> */}
+
+
+
+
+              <div style={styles.tablesContainer}>
+                <div style={styles.tableWrapper}>
+                  <table style={styles.table}>
+                    <thead>
+                      <tr>
+                        <th style={styles.th}>Income Date</th>
+                        <th style={styles.th}>Description</th>
+                        <th style={styles.th}>Customer</th>
+                        <th style={styles.th}>Amount</th>
+                        <th style={styles.th}>Expense Date</th>
+                        <th style={styles.th}>Description</th>
+                        <th style={styles.th}>Name</th>
+                        <th style={styles.th}>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {/* Loop through the maximum length of payments or expenses */}
+                      {Array.from({ length: Math.max(payments.length, expenses.length) }).map((_, index) => (
+                        <tr key={index}>
+                          {/* Income details */}
+                          {payments[index] ? (
+                            <>
+                              <td style={styles.td}>{new Date(payments[index].createdAt).toLocaleDateString()}</td>
+                              <td style={styles.td}>Buy Products</td>
+                              <td style={styles.td}>{payments[index].cardHolderName}</td>
+                              <td style={styles.td}>Rs {payments[index].totalPrice.toFixed(2)}</td>
+                            </>
+                          ) : (
+                            <>
+                              <td style={styles.td}></td>
+                              <td style={styles.td}></td>
+                              <td style={styles.td}></td>
+                              <td style={styles.td}></td>
+                            </>
+                          )}
+
+                          {/* Expense details */}
+                          {expenses[index] ? (
+                            <>
+                              <td style={styles.td}>{new Date(expenses[index].createdAt).toLocaleDateString()}</td>
+                              <td style={styles.td}>{expenses[index].expense}</td>
+                              <td style={styles.td}>{expenses[index].name}</td>
+                              <td style={styles.td}>Rs {expenses[index].cost.toFixed(2)}</td>
+                            </>
+                          ) : (
+                            <>
+                              <td style={styles.td}></td>
+                              <td style={styles.td}></td>
+                              <td style={styles.td}></td>
+                              <td style={styles.td}></td>
+                            </>
+                          )}
+                        </tr>
+                      ))}
+                      {/* Total Row for Income and Expenses */}
+                      <tr>
+                        <td colSpan="3" style={totalPriceRowStyle.totalPriceLabel}>
+                          Total Sales Income:
+                        </td>
+                        <td style={totalPriceRowStyle.totalPriceValue}>
+                          Rs {totalIncome.toFixed(2)}
+                        </td>
+                        <td colSpan="3" style={totalPriceRowStyle.totalPriceLabel}>
+                          Total Expenses:
+                        </td>
+                        <td style={totalPriceRowStyle.totalPriceValue}>
+                          Rs {totalExpenses.toFixed(2)}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
+
+              <div style={{ marginBottom: '150px' }}></div>
+              <table style={styles.table}>
+                <thead>
+                  <tr>
+                    <th style={styles.th}>Description</th>
+                    <th style={styles.th}>Amount</th>
+                    <th style={styles.th}>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style={styles.td}>Total Income</td>
+                    <td style={styles.td}></td>
+                    <td style={styles.td}>Rs {totalIncome.toFixed(2)}</td>
+                  </tr>
+                  {expenses.map((expense) => (
+                    <tr key={expense._id}>
+                      <td style={styles.td}>{expense.expense}</td>
+                      <td style={styles.td}>Rs {expense.cost}</td>
+                      <td style={styles.td}></td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <td style={styles.td}>Total Expenses</td>
+                    <td style={styles.td}></td>
+                    <td style={styles.td}>Rs {totalExpenses.toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <td style={styles.td}>Net Profit</td>
+                    <td style={styles.td}></td>
+                    <td style={styles.td}>Rs {netProfit.toFixed(2)}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h2 style={styles.profitTitle}>Net Profit: Rs {netProfit.toFixed(2)}</h2>
+              <div style={{ marginBottom: '150px' }}></div>
+            </>
+          )}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+
+
 export default NetProfit;
