@@ -139,7 +139,7 @@ const ExpensesDashboard = () => {
       <div style={styles.page}>
         <div style={styles.container}>
         <div style={styles.buttonContainer}>
-          <Link to="/expenses">
+          <Link to="/">
             <button style={styles.buttonexpense}>Expenses</button>
           </Link>
           <Link to="/payments">

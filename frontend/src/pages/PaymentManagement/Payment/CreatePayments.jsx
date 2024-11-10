@@ -169,7 +169,7 @@ function CreatePayments() {
         <textarea
           id="productNameInput"
           value={productName}
-          readOnly
+          
           onChange={(e) => setProductName(e.target.value)}
           style={{ ...styles.textarea, width: '300px' }} 
           rows="10"
@@ -182,7 +182,7 @@ function CreatePayments() {
         <textarea
           id="priceInput"
           value={price}
-          readOnly
+          
           onChange={(e) => setPrice(e.target.value)}
           style={{ ...styles.textarea, width: '150px' }}
           rows="10"
@@ -195,7 +195,7 @@ function CreatePayments() {
         <textarea
           id="quantityInput"
           value={quantity}
-          readOnly
+          
           onChange={(e) => setQuantity(e.target.value)}
           style={{ ...styles.textarea, width: '100px' }}
           rows="10"
@@ -208,7 +208,7 @@ function CreatePayments() {
         <textarea
           id="totalPriceInput"
           value={totalPrice}
-          readOnly
+          
           style={{ ...styles.textarea, width: '150px' }}
           rows="10"
         />

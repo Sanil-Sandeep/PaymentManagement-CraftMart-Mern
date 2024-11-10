@@ -47,7 +47,7 @@ const DeleteExpense = () => {
         <button
           style={styles.buttonCancel}
           onClick={() => {
-            navigate('/expenses'); // Redirect to homepage or desired page
+            navigate('/'); // Redirect to homepage or desired page
           }}
         >
           No

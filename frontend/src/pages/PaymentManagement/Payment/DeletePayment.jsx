@@ -20,7 +20,7 @@ const DeletePayment = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Payment deleted successfully', { variant: 'success' });
-        navigate('/products/card');
+        navigate('/payments');
       })
       .catch((error) => {
         setLoading(false);
