@@ -1,10 +1,15 @@
 
 # PaymentManagement-CraftMart-Mern
 
+<br>
+
 The CraftMart Payment Management System is a comprehensive solution for securely handling customer payments, tracking income and expenses, and calculating net profit. With features like automated e-receipts, detailed income and expense reports, and real-time net profit insights, the system supports efficient financial management for the CraftMart marketplace. Integrated within the platform, it ensures a seamless and secure experience for both customers and payment managers.
 
+<br><br>
 
 ## Acknowledgements
+
+<br>
 
 I would like to extend my deepest gratitude to everyone who supported the development of the CraftMart website, especially the payment management system.
 
@@ -16,12 +21,19 @@ Finally, I would like to thank all the beta testers and users of CraftMart. Your
 
 Thank you all for being a part of this journey!
 
+<br><br>
+
 ## Authors
+
+<br>
 
 - [@Sanil-Sandeep](https://github.com/Sanil-Sandeep)
 
+<br><br>
 
 ## Deployment
+
+<br>
 
 To deploy this project run
 
@@ -31,27 +43,42 @@ To deploy this project run
   npm run dev
 ```
 
+<br>
+
 #### For frontend
 ```bash
   npm i
   npm run dev
 ```
+
+<br><br>
+
 ## Features
+
+<br>
 
 - E-Receipt Generation
 - Income and Expense Tracking
 - Net Profit Calculation
 - Search Payments and Expenses
 
+<br><br>
 
 ## 🚀 About Me
+
+<br>
+
 I'm a full stack developer...
 
 I am a student at the Sri Lanka Institute of Information Technology (SLIIT), currently studying Information Technology. I am passionate about software development and have worked on various projects that focus on improving business processes. One of my key projects is the CraftMart Payment Management System, which handles secure payment processing, income and expense tracking, and net profit calculations for an online marketplace.
 
 I am continually enhancing my skills in web development, database management, and system integration, and I am excited to pursue a career in software development, creating innovative solutions to solve real-world challenges.
+
+<br><br>
+
 ## 🛠 Skills
 
+<br>
 
 - Javascript
 - HTML
@@ -60,10 +87,16 @@ I am continually enhancing my skills in web development, database management, an
 - Node
 - Express
 - CSS
+
+<br><br>
+
 ## Lessons Learned
+
+<br>
 
 While building the CraftMart Payment Management System, I gained valuable insights into the complexities of designing and implementing a comprehensive payment solution. I learned how to integrate secure payment processing, manage financial data efficiently, and develop user-friendly interfaces that improve the customer experience. Additionally, I gained experience in handling data security and encryption, which is critical for protecting sensitive financial information.
 
+<br>
 
 - #### Payment Integration: 
     I learned how to implement secure payment processing, ensuring that all transactions are safely conducted, which is essential for e-commerce platforms.
@@ -78,15 +111,21 @@ While building the CraftMart Payment Management System, I gained valuable insigh
     I learned how to integrate functionality for tracking expenses, calculating net profits, and generating income reports, making it easier for managers to make informed financial decisions.
 
 
+<br><br>
 
 ## Related
+
+<br>
 
 Here are some related projects
 
 [FeedBackManagement-CreaftMart-Mern](https://github.com/Sanil-Sandeep/Feedback-Management-CraftMart-MERN.git)
 
+<br><br>
 
 ## Run Locally
+
+<br>
 
 Clone the project
 
